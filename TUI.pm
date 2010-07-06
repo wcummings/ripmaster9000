@@ -2,6 +2,7 @@ package TUI;
 use strict;
 use warnings;
 use Term::ReadKey;
+use Term::ANSIColor;
 use IO::Handle;
 
 sub new
@@ -22,8 +23,8 @@ sub init
     ($self->{width}, $self->{height}) = GetTerminalSize();
 
     if($self->{width} < 80 || $self->{height} < 24) {
-	$self->clear;
 	print STDERR "Terminal must be at least 80x24\n";
+	exit;
     }
 
     $self->clear;
@@ -54,6 +55,8 @@ sub draw_borders
 {
     my ($self) = @_;
 
+    print color 'blue';
+
     my $topbottom = '+';
     for(1..$self->{width}-2) {
 	$topbottom .= '-';
@@ -75,8 +78,10 @@ sub draw_borders
     $self->mvprint(0, $self->{height}-8, $topbottom);
     $self->mvprint(0, $self->{height}+1, $topbottom);
 
-    my $title = 'RIPMASTER 9000';
-    $self->mvprint($self->{width}-10 - length($title), 0, '| RIPMASTER 9000 |');
+    my $title_text = 'RIPMASTER 9000';
+    my $title = colored('| ', 'blue') . colored($title_text, 'bold blue') . colored(' |', 'blue');
+    $self->mvprint($self->{width}-10 - length($title_text), 0, $title);
+    print color 'reset';
 }
 
 sub console_print
@@ -104,7 +109,9 @@ sub canvas_print
     my $d = $self->{height} - (length($text) + $x);
 
     if($y < $self->{height}-2) {
+	print color 'red';
 	$self->mvprint($x, $y, $text);
+	print color 'reset';
     }
 }
 
