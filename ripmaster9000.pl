@@ -41,6 +41,7 @@ foreach my $dev (@devs) {
 		    print "$procn:$out\n";
 		}
 		close(ABCDE);
+		system("eject $dev");
 		print "STATUS:$procn:WAITING\n";
 	    }
 	}
