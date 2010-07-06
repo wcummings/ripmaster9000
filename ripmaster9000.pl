@@ -21,6 +21,7 @@ $win->console_print("Loaded config: $cfg_file");
 my @devs = $config->read_value('devs');
 my $outdir = $config->read_value('output_dir');
 my $abcde_opts = $config->read_value('abcde_opts');
+$abcde_opts = " " if not defined $abcde_opts; # eew.
 
 my $sel = new IO::Select;
 
