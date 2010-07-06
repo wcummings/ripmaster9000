@@ -52,7 +52,7 @@ sub read_value
 	    return $self->{config}->{$key};
 	}
     } else {
-	print STDERR "Configurator: $key undefined\n";
+	return undef;
     }
 }
 
