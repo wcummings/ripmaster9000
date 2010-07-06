@@ -19,6 +19,8 @@ $config->parse($cfg_file);
 $win->console_print("Loaded config: $cfg_file");
 
 my @devs = $config->read_value('devs');
+my $outdir = $config->read_value('output_dir');
+my $abcde_opts = $config->read_value('abcde_opts');
 
 my $sel = new IO::Select;
 
@@ -31,7 +33,7 @@ foreach my $dev (@devs) {
 	    system("./cdpoll $dev");
 	    my $ev = $? >> 8;
 	    if($ev == 0) {
-		open(ABCDE, "abcde -d $dev -N 2>&1|");
+		open(ABCDE, "cd $outdir ; abcde -d $dev -N $abcde_opts 2>&1|");
 		print "STATUS:$procn:RIPPING\n";
 		while(my $out = <ABCDE>) {
 		    chomp $out;
