@@ -94,6 +94,7 @@ sub console_print
     my $i = 1;
     foreach my $line (@{$self->{console_text}}) {
 	$line = substr($line, 0, $self->{width}-2);
+	$line .= ' ' x ($self->{width}-2-length($line));
 	$self->mvprint(2, $self->{height}-8+$i, $line);
 	$i++;
     }
