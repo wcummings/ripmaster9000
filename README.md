@@ -3,6 +3,8 @@ ripmaster9000
 
 I can rip forever
 
+FOR ARCHIVAL PURPOSES ONLY
+
 This is a simple app for ripping CD's from multiple drives and visualizing it
 
 The configuration is pretty straight-forward:
