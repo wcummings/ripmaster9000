@@ -12,4 +12,4 @@ devs=/dev/cdrom # comma separated list of devices to rip from
 output_dir=/path/to/rips
 ```
 
-![screenshot](https://github.com/wcummings/ripmaster9000/blob/master/screenshots/ripmaster.png "Screenshot")
+![screenshot](https://github.com/wcummings/ripmaster9000/blob/master/screenshots/ripmaster.png?raw=true "Screenshot")
